@@ -35,12 +35,11 @@
     ]]>
 	</select>
 	
-
-
-
-	<!-- 아이디 중복체크 -->
-	<select id="idCheck" resultType="int">
-		select *from customer where
-		id=#{UserId}
+	<select id="idCheck_test" parameterType="String" resultType="int">
+		SELECT COUNT(*) from customer where id =#{id}
 	</select>
+
+
+
+
 </mapper>

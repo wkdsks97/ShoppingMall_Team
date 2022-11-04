@@ -66,7 +66,74 @@ text-align:center;
     font-weight: bold;
     cursor: pointer;
 }
+
+
+.id_ok{
+color:#008000;
+display: none;
+}
+
+.id_already{
+color:#6A82FB; 
+display: none;
+}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+        function checkId_test(){
+        	
+        let id = document.getElementById("id").value;
+        	
+        alert(id);
+        var aa = $('#id').val(); //id값이 "id"인 입력란의 값을 저장
+	
+		
+        
+//         $.ajax({
+//             url:'./idCheck_test', //Controller에서 요청 받을 주소
+//             type:'post', //POST 방식으로 전달
+//             data:{id:id},
+            
+//             success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
+//                 if(cnt == 0){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
+					
+//                 	alert("사용가능 아이디");
+//                 } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
+
+//                     alert("아이디를 다시 입력해주세요");
+
+//                 }
+//             },
+//             error:function(){
+//                 alert("에러입니다");
+//             }
+//         });
+//         };
+
+        $.ajax({
+            url:'./idCheck_test', //Controller에서 요청 받을 주소
+            type:'post', //POST 방식으로 전달
+            data:{id:id},
+            
+ 			function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
+                if(cnt == 0){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
+					
+                	alert("사용가능 아이디");
+                } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
+
+                    alert("아이디를 다시 입력해주세요");
+
+                }
+            },
+
+        });
+      
+
+
+        </script>
+
+
 </head>
 
 
@@ -81,8 +148,10 @@ text-align:center;
 <tr>
 	<td id="title">아이디</td>
 	<td>
-		<input type="text" name="id" maxlength="20">
-		<input type="button" value="중복확인" >    
+		<input type="text" name="id" maxlength="20" Id ="id">
+		<span class="id_ok">사용 가능한 아이디입니다.</span>
+		<span class="id_already">누군가 이 아이디를 사용하고 있어요.</span>
+		<input type="button" value="중복확인" onclick = "checkId_test()"/>    
 	</td>
 </tr>
    
@@ -129,5 +198,6 @@ text-align:center;
    
   		</form>
 	</div>
+
 </body>
 </html>

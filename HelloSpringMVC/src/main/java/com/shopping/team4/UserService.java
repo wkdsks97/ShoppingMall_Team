@@ -16,5 +16,6 @@ public interface UserService {
 	
 	Map<String, Object> login_ok(Map<String, Object> map);
 	
+	public int idCheck_test(String id);
 	
 }
