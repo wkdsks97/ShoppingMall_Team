@@ -9,6 +9,21 @@
 	<link href="ex.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="${path}/resources/ex.css"/>
 	
+	<style>
+	.container .header
+	{
+    /*width: 80%;*/
+    height: 80px;
+    margin-top: 0px;
+    margin-right: 153px;
+    margin-bottom: 0px;
+    margin-left: 160px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+	}
+	</style>
+	
 	
 </head>
 <body>
@@ -21,6 +36,7 @@
                     <li><a href="${path}/create_user">JOIN</a></li>
                     <li><a href="#">MYPAGE</a></li>
                     <li><a href="#">CART</a></li>
+                    
 
                 </ul>
             </div>

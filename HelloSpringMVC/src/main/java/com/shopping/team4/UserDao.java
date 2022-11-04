@@ -35,6 +35,11 @@ public class UserDao {
 		 int result=  this.sqlSessionTemplate.selectOne("user.idCheck", map);
 				 return result;
 	 }
+
+	public int idCheck_test(String id) {
+		int result = this.sqlSessionTemplate.selectOne("user.idCheck_test", id);
+		return result;
+	}
 	 
 	 
 	 

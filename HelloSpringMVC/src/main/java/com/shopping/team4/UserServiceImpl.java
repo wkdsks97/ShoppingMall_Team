@@ -51,6 +51,13 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return this.userDao.Login_Check(map);
 	}
+
+	@Override
+	public int idCheck_test(String id) {
+		int cnt = userDao.idCheck_test(id);
+		System.out.println(cnt);
+		return cnt;
+	}
 	
 
 	
