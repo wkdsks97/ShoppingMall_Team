@@ -90,33 +90,13 @@ display: none;
 	
 		
         
-//         $.ajax({
-//             url:'./idCheck_test', //Controller에서 요청 받을 주소
-//             type:'post', //POST 방식으로 전달
-//             data:{id:id},
-            
-//             success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
-//                 if(cnt == 0){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
-					
-//                 	alert("사용가능 아이디");
-//                 } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
-
-//                     alert("아이디를 다시 입력해주세요");
-
-//                 }
-//             },
-//             error:function(){
-//                 alert("에러입니다");
-//             }
-//         });
-//         };
-
         $.ajax({
             url:'./idCheck_test', //Controller에서 요청 받을 주소
             type:'post', //POST 방식으로 전달
             data:{id:id},
-            
- 			function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
+//             contentType : 'application/json; charset=UTF-8'
+            //dataType : 'json',
+            success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
                 if(cnt == 0){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
 					
                 	alert("사용가능 아이디");
@@ -126,8 +106,14 @@ display: none;
 
                 }
             },
-
+            error:function(request, status, error){
+				
+        		alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            }
         });
+        };
+
+
       
 
 

@@ -54,9 +54,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int idCheck_test(String id) {
-		int cnt = userDao.idCheck_test(id);
-		System.out.println(cnt);
-		return cnt;
+		int cnt1 = userDao.idCheck_test(id);
+		System.out.println(cnt1);
+		System.out.println("aa");
+		return cnt1;
 	}
 	
 
