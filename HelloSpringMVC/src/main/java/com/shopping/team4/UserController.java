@@ -171,12 +171,13 @@ public class UserController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/idCheck_test", method = RequestMethod.POST)
 	@ResponseBody
+	@RequestMapping(value = "/idCheck_test", method = RequestMethod.POST,produces = "application/json")
 	public int idCheck_test(@RequestParam("id") String id) {
 		
 		int cnt = userService.idCheck_test(id);
 		System.out.println(cnt);
+		System.out.println("bb");
 		return cnt;
 		
 	}

@@ -38,6 +38,8 @@ public class UserDao {
 
 	public int idCheck_test(String id) {
 		int result = this.sqlSessionTemplate.selectOne("user.idCheck_test", id);
+		System.out.println(result);
+		System.out.println("cc");
 		return result;
 	}
 	 
