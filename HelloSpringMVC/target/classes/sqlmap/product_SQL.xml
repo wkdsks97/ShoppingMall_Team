@@ -7,7 +7,7 @@
 <!-- title,category,price = 파라메터 -->
 <!-- title, category, price : 키 -->
 <!-- #{title} 등 : 그 파라메터의 값(=value) -->
-<insert id="insert" parameterType="hashMap" useGeneratedKeys="true" keyProperty="book_id">  
+<insert id="insert" parameterType="hashMap" useGeneratedKeys="true" keyProperty="pd_name">  
     <![CDATA[
     insert into pd
     (pd_num, pd_name, price, img) 
@@ -25,6 +25,15 @@ resultType="hashMap">
 	pd where pd_num=#{pd_num}
 ]]>
 
+</select>
+
+<select id="listPage" parameterType="hashMap" resultType = "hashMap">
+	select * 
+	from pd order by pd_num desc limit #{page}, 8
+</select>
+
+<select id="listPageCri" parameterType = "hashMap" resultType="hashMap">
+	select * from pd order by pd_num desc limit #{pageStart},#{pageSize}
 </select>
 
 
@@ -61,13 +70,13 @@ delete from pd where pd_num=#{pd_num}
 <select id="countBookBoard" parameterType="hashMap" 
  resultType="int">
  <![CDATA[
- select count(*) from book 
+ select count(*) from pd
  where 1=1 
  ]]> 
  <if test="keyword!=null and keyword!=''">
-and (title like CONCAT('%',#{keyword},'%') )
+and (pd_name like CONCAT('%',#{keyword},'%') )
  </if>
- order by insert_date desc 
+ order by pd_num desc 
 
 </select>
 
@@ -77,15 +86,15 @@ and (title like CONCAT('%',#{keyword},'%') )
 parameterType="hashMap" 
 resultType="hashMap">
 <![CDATA[
-select book_id,title,category,price,insert_date  
- from book 
+select pd_num,pd_name,price,pd_category, pd_category_big  
+ from pd 
  where 1 = 1 
  ]]> 
  <if test="keyword!=null and keyword!=''">
- and (title like CONCAT('%',#{keyword},'%') 
- or category like CONCAT('%',#{keyword},'%'))
+ and (pd_category like CONCAT('%',#{keyword},'%') 
+ or pd_category_big like CONCAT('%',#{keyword},'%'))
  </if>
- order by insert_date desc 
+ order by pd_name desc 
  <choose>
  	<when test="skipCount==null">
  		limit 0,3

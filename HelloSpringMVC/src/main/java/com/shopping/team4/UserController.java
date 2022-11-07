@@ -1,8 +1,11 @@
 package com.shopping.team4;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +25,8 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-//	@RequestMapping(value="/home")
+	static int duplicate = 1;
+	//	@RequestMapping(value="/home")
 //	public ModelAndView home(@RequestParam Map<String,Object>map) {
 //		ModelAndView mav = new ModelAndView();
 //		mav.setViewName("/user/home");
@@ -43,6 +47,24 @@ public class UserController {
 		return mav;
 
 	}
+	
+	
+	@RequestMapping(value = "/mainhome")
+	public ModelAndView mainhome(@RequestParam Map<String, Object> map, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+
+		session.invalidate();
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/user/mainhome");
+		// return new ModelAndView("book/home");
+		return mav;
+
+	}
+	
+	
+	
+	
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login() {
@@ -123,13 +145,22 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/create_user", method = RequestMethod.POST)
-	public ModelAndView createPost(@RequestParam Map<String, Object> map) {
+	public ModelAndView createPost(@RequestParam Map<String, Object> map, HttpServletResponse response) throws IOException {
 		ModelAndView mav = new ModelAndView();
+		
+		if(duplicate == 1) {
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('중복체크를 해주세요'); </script>");
+			out.flush();
+			return new ModelAndView("user/create_user");
+		}
+		
 		PasswordEncoder p = new BCryptPasswordEncoder();
 		String encodepw = p.encode(map.get("pw").toString());
 
 		map.replace("pw", encodepw);
-
+		
 		String UserId = this.userService.create(map);
 
 		if (UserId == null) {
@@ -178,6 +209,11 @@ public class UserController {
 		int cnt = userService.idCheck_test(id);
 		System.out.println(cnt);
 		System.out.println("bb");
+		if(cnt == 1) {
+			duplicate = 1;
+		}else {
+			duplicate = 0;
+		}
 		return cnt;
 		
 	}

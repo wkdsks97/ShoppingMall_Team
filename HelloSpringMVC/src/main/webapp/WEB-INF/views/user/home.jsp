@@ -47,7 +47,7 @@
                 The peaceful communication and understanding of each other will be shown in this very space. <br>
                 Each character on the table wears Coor’s collections interpreted in different ways. We invite you on this trip with your imagination.
                 </p>
-            <button>View Pages</button>
+            <button><a href = "${path}/mainhome">View Pages</button>
         </div>
     </div>
 </body>
