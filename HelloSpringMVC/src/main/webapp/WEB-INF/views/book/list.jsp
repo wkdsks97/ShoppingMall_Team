@@ -31,6 +31,7 @@ a{text-decoration: none}</style>
 			</tr>
 		</thead>
 		<tbody>
+		
 			<c:forEach var="row" items="${data}">
 				<tr>
 					<td><a href="/detail?bookId=${row.book_id}"> ${row.title}
@@ -40,6 +41,8 @@ a{text-decoration: none}</style>
 							value="${row.price}" /></td>
 				</tr>
 			</c:forEach>
+			
+			
 		</tbody>
 	</table>
 	<c:if test="${startPage!=1}">

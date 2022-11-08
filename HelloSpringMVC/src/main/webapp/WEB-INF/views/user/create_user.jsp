@@ -54,7 +54,19 @@ text-align:center;
 
 }
         
-#btn{
+#btn1{
+    width:100%;
+    height:33px;
+    margin: 10px 0 5px 0;
+    color:white;
+    background-color: #C0DFFD;
+    border-radius: 5px;
+    border-style: none;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+#btn2{
     width:100%;
     height:33px;
     margin: 10px 0 5px 0;
@@ -74,18 +86,19 @@ display: none;
 }
 
 .id_already{
-color:#6A82FB; 
+color:red; 
 display: none;
 }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+		var duplicate = 0;
 
         function checkId_test(){
         	
         let id = document.getElementById("id").value;
-        	
-        alert(id);
+        //static int duplicate = 1;	
+        //alert(id);
         var aa = $('#id').val(); //id값이 "id"인 입력란의 값을 저장
 	
 		
@@ -97,12 +110,16 @@ display: none;
 //             contentType : 'application/json; charset=UTF-8'
             //dataType : 'json',
             success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
+          	
                 if(cnt == 0){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
-					
-                	alert("사용가능 아이디");
+                	$('.id_ok').css("display","inline-block"); 
+                    $('.id_already').css("display", "none");
+					duplicate = 1;
                 } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
-
-                    alert("아이디를 다시 입력해주세요");
+                	$('.id_already').css("display","inline-block");
+                    $('.id_ok').css("display", "none");
+                    duplicate = 0;
+                    alert("아이디가 중복되었습니다.");
 
                 }
             },
@@ -113,7 +130,8 @@ display: none;
         });
         };
 
-
+       
+      
       
 
 
@@ -124,6 +142,7 @@ display: none;
 
 
 <body>
+
 <div id="wrap">
 <br><br>
  <div class="login_logo">MaisonBonita</div>
@@ -135,9 +154,9 @@ display: none;
 	<td id="title">아이디</td>
 	<td>
 		<input type="text" name="id" maxlength="20" Id ="id">
+		<input type="button" value="중복확인" onclick = "checkId_test()"/></br>    
 		<span class="id_ok">사용 가능한 아이디입니다.</span>
-		<span class="id_already">누군가 이 아이디를 사용하고 있어요.</span>
-		<input type="button" value="중복확인" onclick = "checkId_test()"/>    
+		<span class="id_already">이미 사용중인 아이디입니다.</span>
 	</td>
 </tr>
    
@@ -179,8 +198,8 @@ display: none;
 </table>
 
   <br>
-   <input type="submit" value="가입" id="btn"/>
-   <input type="reset" value="취소" id="btn"/>
+   <input type="submit" value="가입" id="btn1"/>
+   <input type="reset" value="취소" id="btn2"/>
    
   		</form>
 	</div>
