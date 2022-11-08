@@ -1,5 +1,6 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <html lang="en">
 
@@ -81,11 +82,13 @@
         <div class="box-container">
         
         	<c:forEach var="row" items="${data}">
-        		<img src="${row.img}" alt="">
+        		<div class="box">
+        			<img src="${row.img}" alt="">
 
-                <div class="content">
-                    <h3><a href="#clothes">${row.pd_category}</a></h3>
-                    <div class="price">${row.price}</div>
+                	<div class="content">
+                   		<h3><a href="#clothes">${row.pd_category}</a></h3>
+                    	<div class="price">${row.price}</div>
+                	</div>
                 </div>
         	</c:forEach>
         
@@ -95,12 +98,12 @@
     </section>
     </div>
     <c:if test="${startPage!=1}">
-		<a href="/list?nowPage=${startPage-1}&keyword=${keyword}">&lt;</a>
+		<a href="/mainhome2?nowPage=${startPage-1}&keyword=${keyword}">&lt;</a>
 	</c:if>
 	<c:forEach var="idx" begin="${startPage}" end="${endPage}">
 		<c:choose>
 			<c:when test="${nowPage!=idx}">
-				<a href="/list?nowPage=${idx}&keyword=${keyword}">
+				<a href="/mainhome2?nowPage=${idx}&keyword=${keyword}">
 				${idx}&nbsp;</a>
 			</c:when>
 			<c:when test="${nowPage==idx}">
@@ -109,7 +112,7 @@
 		</c:choose>
 	</c:forEach>
 	<c:if test="${endPage!=totalCount}">
-		<a href="/list?nowPage=${endPage+1}&keyword=${keyword}">&gt;</a>
+		<a href="/mainhome2?nowPage=${endPage+1}&keyword=${keyword}">&gt;</a>
 	</c:if>
 
     <!-- footer -->

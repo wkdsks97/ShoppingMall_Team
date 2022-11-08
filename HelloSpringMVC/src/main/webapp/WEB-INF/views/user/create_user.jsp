@@ -1,105 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="./style/login.css">
-<link rel="stylesheet" type="text/css" href="./style/common.css">
-<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-<title>회원가입</title>
-<style type="text/css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link href="create_user.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="${path}/resources/create_user.css">
 
-.login_logo{
-    margin :10px 0 10px 0;
-    color:#262626;
-    font-family: 'Lobster', cursive;
-    font-size: 40px;
-}
-
-#wrap{
-    position:absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width:500px;
-    height:500px;
-    top:40%;
-    left:40%;
-    margin: -175px 0px 0px -190px;
-    background-color:white;
-    border: 1px solid black;
-}
-
-td{
-border:1px solid skyblue;
-}
-
-font{
-            margin-left:auto; 
-            margin-right:auto;
-            text-align:center;
-            background-color:skyblue;
-            text-align:center;
-}
-body {
-	margin: 0px;
-    box-sizing: border-box;
-}
-#title{
-background-color:skyblue;
-text-align:center;
-
-}
-        
-#btn1{
-    width:100%;
-    height:33px;
-    margin: 10px 0 5px 0;
-    color:white;
-    background-color: #C0DFFD;
-    border-radius: 5px;
-    border-style: none;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-}
-#btn2{
-    width:100%;
-    height:33px;
-    margin: 10px 0 5px 0;
-    color:white;
-    background-color: #C0DFFD;
-    border-radius: 5px;
-    border-style: none;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-
-.id_ok{
-color:#008000;
-display: none;
-}
-
-.id_already{
-color:red; 
-display: none;
-}
-</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 		var duplicate = 0;
 
         function checkId_test(){
         	
-        let id = document.getElementById("id").value;
+        let id = document.getElementById("user_id").value;
         //static int duplicate = 1;	
         //alert(id);
-        var aa = $('#id').val(); //id값이 "id"인 입력란의 값을 저장
+        var aa = $('#user_id').val(); //id값이 "id"인 입력란의 값을 저장
 	
 		
         
@@ -137,72 +55,153 @@ display: none;
 
         </script>
 
-
 </head>
 
-
 <body>
+    <!-- header section starts -->
+    <header>
+        <h1><a href="#">Mesion Bonita</a></h1>
+        <div class="nav">
+            <ul>
+                <li><a href="#">LOGOUT</a></li>
+                <li><a href="#">MYPAGE</a></li>
+                <li><a href="#">CART</a></li>
+                <li><a href="#">COMMUNITY</a></li>
+            </ul>
+        </div>
+    </header>
+    <!-- header section end -->
 
-<div id="wrap">
-<br><br>
- <div class="login_logo">MaisonBonita</div>
-<br><br>
+        <!-- 카테고리 코드 -->
+        <div style="position: relative; z-index: 2;">
+        <div class="menu" id="menu">
+            <ul >
+                <li><a href="#menu1">OUTER</a>
+                    <ul>
+                        <li><a href="#menu1">CARDIGAN</li>
+                        <li><a href="#menu1">JUMPER</li>
+                        <li><a href="#menu1">COAT</li>
+                        <li><a href="#menu1">JACKET</li>
+                    </ul>
+                </li>
+        
+                <li><a href="#menu2">TOP</a>
+                    <ul >
+                        <li><a href="#menu2">KNIT</li>
+                        <li><a href="#menu2">TEE&SHIRT</li>
+                        <li><a href="#menu2">MTM&HOOD</li>
+                        <li><a href="#menu2">BLOUSE</li>
+                    </ul>
+                </li>
+        
+                <li><a href="#menu3">BOTTOM</a>
+                    <ul >
+                        <li><a href="#menu3">STRAIGHT</li>
+                        <li><a href="#menu3">WIDE</li>
+                        <li><a href="#menu3">SLACKS</li>
+                    </ul>
+                </li>
+        
+                <li><a href="#menu4">DRESS</a>
+                    <ul >
+                        <li><a href="#menu4">SKIRT</li>
+                        <li><a href="#menu4">DRESS</li>
+                    </ul>
+                </li>
+                <li><a href="#menu5">ACC</a>
+                    <ul >
+                        <li><a href="#menu5">SKIRT</li>
+                        <li><a href="#menu5">DRESS</li>
+                    </ul>
+                </li>
+            </ul>        
+        </div>
+        </div>    
+    <!-- </div>  -->
 
-<form method="POST">
-<table>
-<tr>
-	<td id="title">아이디</td>
-	<td>
-		<input type="text" name="id" maxlength="20" Id ="id">
-		<input type="button" value="중복확인" onclick = "checkId_test()"/></br>    
-		<span class="id_ok">사용 가능한 아이디입니다.</span>
-		<span class="id_already">이미 사용중인 아이디입니다.</span>
-	</td>
-</tr>
-   
-<tr>
-	<td id="title">비밀번호</td>
-	<td>
-		<input type="password" name="pw" maxlength="15">
-	</td>
-</tr>
+<div class="join_wrap">
+    <h2>회원가입</h2>
+    <form method="post">
+        <fieldset>
+            <table class="jointable">
+                <tr>
+                    <th class="first">아이디</th>
+                    <td><input type="text" name = "id" id="user_id" class="textForm" required autofocus>
+                        <input type="button" value="중복확인" class="btn" onclick = "checkId_test()"><br>
+                    <span class="id_ok">사용 가능한 아이디입니다.</span>
+					<span class="id_already">이미 사용중인 아이디입니다.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>비밀번호</th>
+                    <td>
+                        <input type="password" id="user_pw" name ="pw" class="textForm">
+                    </td>
+                </tr>
+                <tr>
+                    <th>전화번호</th>
+                    <td>
+                        <input type="hp" id="user_hp" name="adress" class="textForm">
+                    </td>
+                </tr>
+                <tr>
+                    <th>이메일</th>
+                    <td>
+                        <input type="email" id="user_email" name= "e_mail" class="textForm">
+                    </td>
+                </tr>
+                <tr>
+                    <th>성&nbsp&nbsp별</th>
+                    <td>
+                        <input type="radio" name="gender" id="male" checked ="checked">
+                        <label for="male">남</label>&nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="gender" id="female">
+                        <label for="female">여</label>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <div class="btn_area">
+            <button type="reset">취 소</button>
+            <button type="submit" class="btn_join">회원가입</button>
+        </div>
+    </form>
+</div>
 
-<tr>
-	<td id="title">주소</td>
-	<td>
-		<input type="text" size="40" name="address"/>
-	</td>
-</tr>
-
-<tr>
-   <td id="title">전화번호</td>
-   <td>
-   <input type="text" name="hp" />
-   </td>
-</tr>
-
-<tr>
-   <td id="title">이메일   </td>
-   <td>
-   <input type="text" name="e_mail" maxlength="20"/>
-   </td>
-</tr>
-   
-<tr>
-<td id="title">성별</td>
-<td>
-<input type="radio" name="gender" value="남" checked ="checked">남
-<input type="radio" name="gender" value="여" >여
-</td>
-</tr>
-</table>
-
-  <br>
-   <input type="submit" value="가입" id="btn1"/>
-   <input type="reset" value="취소" id="btn2"/>
-   
-  		</form>
-	</div>
-
+    <!-- footer -->
+<footer>
+    <ul id="footer_menu">
+        <li>회사약관</li>
+        <li>회사소개</li>
+        <li>이용안내</li>
+        <li>고객센터</li>
+        <li>개인정보취급방침</li>
+    </ul>
+    <div class="footer_box">
+        <div class="footers">
+            <h3>MesionBonita(주)</h3>
+            <ul>
+                <li>사업자 등록번호:12345567</li>
+                <li>대표이사 홍길동 | 대구광역시 동구 신천동</li>
+                <li>전화 1111-2222</li>
+            </ul>
+        </div>
+        <div class="footers">
+            <h3>고객센터</h3>
+            <ul>
+                <li>대구광역시 동구 신천동</li>
+                <li>전화 1234-5678</li>
+                <li><span>1:1문의 바로가기</span></li>
+            </ul>
+        </div>
+        <div class="footers">
+            <h3>전자금융거래 분쟁처리</h3>
+            <ul>
+                <li>서울특별시 강남구 압구정동  </li>
+                <li>전화 1588-5678</li>
+                <li><span>1:1문의 바로가기</span></li>
+            </ul>
+        </div>        
+    </div>
+</footer>
 </body>
-</html>

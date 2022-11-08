@@ -24,11 +24,11 @@ public class ProductController {
 	
 
 	
-	@RequestMapping(value="mainhome2")
+	@RequestMapping(value="/mainhome2")
 	public ModelAndView list
 	(@RequestParam Map<String,Object> map,
 	 @RequestParam(value="nowPage",required=false) String nowPage) {
-		double CNT = 2.0; //한 번에 보여지는 페이지 의미(밑에 숫자)
+		double CNT = 8.0; //한 번에 보여지는 페이지 의미(밑에 숫자)
 		int LIMITCOUNT = (int)CNT;
 		if(nowPage!=null) {
 			int now = Integer.parseInt(nowPage);

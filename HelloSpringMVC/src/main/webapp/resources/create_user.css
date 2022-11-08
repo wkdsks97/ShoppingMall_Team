@@ -23,16 +23,17 @@ html {
     overflow-x: auto;
     box-sizing: border-box;
 }
-section{
+
+section {
     position: static;
 }
 
 
-header{
-    position:static;
+header {
+    position: static;
     top: 70%;
-    margin:0 auto;
-    text-align:center; 
+    margin: 0 auto;
+    text-align: center;
     /* align-items: center;*/
     justify-content: space-between;
     /* display: inline-block; */
@@ -44,20 +45,21 @@ header h1 a {
     font-size: 50px;
     text-decoration: none;
     color: black;
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
     display: inline-block;
     text-align: center;
     width: 100%;
 }
-.nav ul li a{
-    font:bold 13px "malgun gothic";
-    color:black;
+
+.nav ul li a {
+    font: bold 13px "malgun gothic";
+    color: black;
     /* display: inline-block; */
     text-align: right;
     margin-right: 20px;
     margin-bottom: 10px;
 
-    
+
 }
 
 .nav ul li {
@@ -75,113 +77,141 @@ header h1 a {
 }
 
 /* ul li��洹몄�� 由ъ�ㅽ�� �ㅽ���쇱�� ���� */
-ul li{
+ul li {
     list-style: none;
 
 }
+
 /* a��洹몄�� ���ㅽ�� 諛�以��� ����怨� ������ #333 */
 a {
     text-decoration: none;
-    color:#333;
+    color: #333;
 }
+
 /* 湲����ш린瑜� 16px 留��� 怨��� 援듦���怨� width���� 700, ���� 50留��� 諛곌꼍���� #ccc, 湲������� 寃�����, �쇱�몃����50px
 menu諛��� 媛��대�곗����, 湲���媛��대�� ���� */
 .menu {
     font: 16px "malgun gothic";
-    width: 1000px;
-    height:150px;
-    color:black;
-    line-height: 50px; 
-    margin:0 auto;
+    width: 800px;
+    height: 150px;
+    color: black;
+    line-height: 50px;
+    margin: 0 auto;
     text-align: center;
     border-top: solid 1px #dedede;
-    
+
 }
 
 /* menu��洹� ������ ul�� ���� li瑜� �쇱そ���ш낵 ���� 140�ㅼ�� */
-.menu > ul > li {
-    float:left;
+.menu>ul>li {
+    float: left;
     width: 160px;
-    position:static;
+    position: static;
     /* background-color:gainsboro; */
 }
-.menu > ul > li > ul {
-    width:160px;
-    display:none;
+
+.menu>ul>li>ul {
+    width: 160px;
+    display: none;
     position: absolute;
-    font-size:13px;
+    font-size: 13px;
     background-position: 20px;
 }
 
-.menu > ul > li:hover > ul {
-    display:block;
+.menu>ul>li:hover>ul {
+    display: block;
 }
 
-.menu > ul > li > ul > li a:hover {
+.menu>ul>li>ul>li a:hover {
     color: burlywood;
     transition: ease 0.2s;
-    }
+}
 
+/* ����媛��� */
+/* fieldset {
+    border: 0;
+}
 
+table {
+    border-collapse: collapse;
+    margin-top: 10px;
+} */
 
-.products .box-container{
-    display:flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-    max-width: 1800px;
+/* ���대� 媛��대�� ���� */
+.join_wrap {
+    width: 600px;
+    margin-top: 30px;
     margin: 0 auto;
-    /* position: absolute; */
-    /* bottom: 10px; */
-    
-    
-
+    text-align: center;
+    font: "malgun gothic";
 
 }
-.products .box-container.box{
-    /* flex: 1 1 30rem; */
+
+.jointable th,
+.jointable td {
+    padding: 5px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(237, 237, 237, 0.696);
+}
+
+.jointable th {
+    text-align: center;
+    background-color: #dededebd;
+    width: 300px;
+    color: rgb(79, 79, 79);
+}
+
+.jointable td {
+    width: 500px;
+}
+
+.jointable .textForm {
+    width: 420px;
+    height: 42px;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    position:relative;
-    top: 100px;
+    padding: 0 10px;
+    box-sizing: border-box;
+
+}
+
+/* 以�蹂듯���몃��� */
+.jointable .btn {
+    width: 80px;
+    height: 42px;
+    border: 2;
+    position: absolute;
+    background-color: #dddddd;
+    border-radius: 5px;
+    color: black;
+    font-weight: bolder;
+}
+
+.btn_area {
     text-align: center;
-
-}
-.products .box-container .box .image{
-    position: static;
-    text-align: center;
-    padding-top: 100px;
-    overflow:hidden;
-}
-.products .box-container .box .image img{
-    height:20px;
-    max-width: 10%;
-    display: flex;
-    
+    margin: 30px 0;
 }
 
+.btn_area button {
+    width: 120px;
+    height: 50px;
+    margin: 0 10px;
+    border: 0;
+    font-size: 18px;
+    font-weight: bolder;
 
-.products .box-container .box .content{
-    padding: 10px;
-    text-align: center;
- 
 }
 
-.content h3>a{
-    font-size: 20px;
-    color:black;
-    font-weight: bolder;   
+.btn_area .btn_join {
+    background-color: #dddddd;
+    color: #333;
+
 }
 
 
-.products .box-container .box .content .price{
-    font-size: 16px;
-    color:black;
-    font-weight: lighter;
-    
-}
 
 /* footer */
-footer{
+footer {
     margin-top: 80px;
     border-top: solid 1px #dddddd;
     margin: 0 auto;
@@ -190,17 +220,18 @@ footer{
 
 
 
-#footer_menu{
+#footer_menu {
     padding-bottom: 10px;
     padding-top: 10px;
 }
 
 
-#footer_menu li{
+#footer_menu li {
     display: inline-block;
     margin-left: 10px;
 }
-.footers{
+
+.footers {
 
     display: inline-block;
     text-align: center;
@@ -208,11 +239,23 @@ footer{
     width: 20%;
 
 }
-.footers li{
+
+.footers li {
     margin-top: 8px;
     font-size: 12px;
 }
-.footers span{
+
+.footers span {
     font-weight: bold;
 
+}
+
+.id_ok{
+color:#008000;
+display: none;
+}
+
+.id_already{
+color:red; 
+display: none;
 }

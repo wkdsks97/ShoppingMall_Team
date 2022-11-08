@@ -67,7 +67,7 @@ delete from pd where pd_num=#{pd_num}
 
 
 <!-- 게시판 글의 총 개수 or 검색된 글의 총 개수 -->
-<select id="countBookBoard" parameterType="hashMap" 
+<select id="countPD" parameterType="hashMap" 
  resultType="int">
  <![CDATA[
  select count(*) from pd
@@ -86,7 +86,7 @@ and (pd_name like CONCAT('%',#{keyword},'%') )
 parameterType="hashMap" 
 resultType="hashMap">
 <![CDATA[
-select pd_num,pd_name,price,pd_category, pd_category_big  
+select pd_num,pd_name,price,pd_category,img, pd_category_big  
  from pd 
  where 1 = 1 
  ]]> 
@@ -97,10 +97,10 @@ select pd_num,pd_name,price,pd_category, pd_category_big
  order by pd_name desc 
  <choose>
  	<when test="skipCount==null">
- 		limit 0,3
+ 		limit 0,8
  	</when>
  	<when test="skipCount!=null">
- 		limit ${skipCount}, 3
+ 		limit ${skipCount}, 8
  	</when>
  </choose>
 
