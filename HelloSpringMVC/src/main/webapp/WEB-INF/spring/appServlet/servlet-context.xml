@@ -24,9 +24,10 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.lecspring.myspring" />
+	<context:component-scan base-package="com.shopping.pd" />
 	<context:component-scan base-package="com.shopping.team4" />
 	<context:component-scan base-package="com.shopping.product" />
+	<context:component-scan base-package="com.shopping.cart" />
 	
 	<mvc:annotation-driven/> 
 

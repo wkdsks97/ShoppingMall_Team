@@ -106,6 +106,7 @@ select pd_num,pd_name,price,pd_category,img, pd_category_big
 
 </select>
 
+
 </mapper>
 
 

@@ -1,5 +1,6 @@
 package com.shopping.team4;
 
+import java.util.List;
 import java.util.Map;
 
 public interface UserService {
@@ -17,5 +18,17 @@ public interface UserService {
 	Map<String, Object> login_ok(Map<String, Object> map);
 	
 	public int idCheck_test(String id);
+
+	List<Map<String, Object>> list(Map<String, Object> map);
+
+	String cart(Map<String, Object> map);
+
+	List<Map<String, Object>> buy_list(Map<String, Object> map);
+
+	List<Map<String, Object>> cartlist(Map<String, Object> map);
+
+	List<Map<String, Object>> mycartlist(Map<String, Object> map);
+	
+	List<Map<String, Object>> select_buyinfo(Map<String, Object> map);
 	
 }

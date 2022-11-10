@@ -12,8 +12,6 @@ public class ProductDao {
 	 SqlSessionTemplate sqlSessionTemplate;
 	 
 	 public int insert(Map<String, Object> map) {
-			//mapper(=book_SQL.xml)에 있는 id가 insert인
-			//쿼리를 수행함
 			return 
 			this.sqlSessionTemplate.insert
 			("pd.insert",map);

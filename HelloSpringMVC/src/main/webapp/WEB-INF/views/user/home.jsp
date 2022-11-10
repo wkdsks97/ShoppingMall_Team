@@ -29,14 +29,11 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1><a href="#">Mesion Bonita</a></h1>
+            <h1><a href="/home">Mesion Bonita</a></h1>
             <div class="nav">
                 <ul>
                     <li><a href="${path}/login">LOGIN</a></li>
                     <li><a href="${path}/create_user">JOIN</a></li>
-                    <li><a href="#">MYPAGE</a></li>
-                    <li><a href="#">CART</a></li>
-                    
 
                 </ul>
             </div>
@@ -47,7 +44,7 @@
                 The peaceful communication and understanding of each other will be shown in this very space. <br>
                 Each character on the table wears Coor’s collections interpreted in different ways. We invite you on this trip with your imagination.
                 </p>
-            <button><a href = "${path}/mainhome">View Pages</button>
+            <button><a href = "/mainhome2">View Pages</button>
         </div>
     </div>
 </body>

@@ -2,6 +2,7 @@ package com.shopping.team4;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,14 +27,8 @@ public class UserController {
 	UserService userService;
 
 	static int duplicate = 1;
-	//	@RequestMapping(value="/home")
-//	public ModelAndView home(@RequestParam Map<String,Object>map) {
-//		ModelAndView mav = new ModelAndView();
-//		mav.setViewName("/user/home");
-//		
-//		return mav;
-//		
-//	}
+
+	
 
 	@RequestMapping(value = "/home")
 	public ModelAndView home(@RequestParam Map<String, Object> map, HttpServletRequest request) {
@@ -43,7 +38,7 @@ public class UserController {
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/user/home");
-		// return new ModelAndView("book/home");
+
 		return mav;
 
 	}
@@ -51,13 +46,13 @@ public class UserController {
 	
 	@RequestMapping(value = "/mainhome")
 	public ModelAndView mainhome(@RequestParam Map<String, Object> map, HttpServletRequest request) {
-		HttpSession session = request.getSession();
-
-		session.invalidate();
+//		HttpSession session = request.getSession();
+//
+//		session.invalidate();
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/user/mainhome");
-		// return new ModelAndView("book/home");
+
 		return mav;
 
 	}
@@ -71,7 +66,7 @@ public class UserController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/user/login");
 		System.out.println("??????????");
-		// return new ModelAndView("book/home");
+
 		return mav;
 
 	}
@@ -79,26 +74,18 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView login_post(@RequestParam Map<String, Object> map, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		// return new ModelAndView("book/home");
+
 		Map<String, Object> userpw = this.userService.login_ok(map);
 
-		// mav.addObject(userpw);
 
-		// map.get("id");
-		// System.out.println(userpw.get("pw"));
-		// System.out.println(map.get("pw"));
 
 		PasswordEncoder p = new BCryptPasswordEncoder();
-//		String encodepw = p.encode(map.get("pw").toString());
-//		
-//		System.out.println(encodepw);
-//		System.out.println(userpw.get("pw").toString());
+
 		System.out.println(p.matches(map.get("pw").toString(), userpw.get("pw").toString()));
 
 		if (userpw == null) {
 
-//		String UserId = map.get("UserId").toString();  
-//		mav.addObject("id", UserId);
+
 			mav.setViewName("/user/login");
 
 		} else {
@@ -151,7 +138,7 @@ public class UserController {
 		if(duplicate == 1) {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('Áßº¹Ã¼Å©¸¦ ÇØÁÖ¼¼¿ä'); </script>");
+			out.println("<script>alert('ï¿½ßºï¿½Ã¼Å©ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½'); </script>");
 			out.flush();
 			return new ModelAndView("user/create_user");
 		}
@@ -166,7 +153,7 @@ public class UserController {
 		if (UserId == null) {
 			mav.setViewName("redirect:/create_user");
 		} else {
-			mav.setViewName("redirect:/detail_user?UserId=" + UserId);
+			mav.setViewName("redirect:/home");
 		}
 
 		return mav;
@@ -218,12 +205,80 @@ public class UserController {
 		
 	}
 	
+	@RequestMapping(value = "list")  
+	public ModelAndView list(@RequestParam Map<String, Object> map) {  
+
+	List<Map<String, Object>> list = this.userService.list(map);  
+
+	ModelAndView mav = new ModelAndView();  
+	mav.addObject("data", list);  
+	mav.setViewName("/user/list");  
+	return mav;  
+	}  
 	
 	
+
+	//ì¹´íŠ¸ë§Œë“¤ê¸°
+	@RequestMapping(value="user/cart", method = RequestMethod.GET)
+	public ModelAndView cartlist() {
+	    return new ModelAndView("user/cart");
+	}
+
+	@RequestMapping(value = "user/cartlist", method = RequestMethod.GET)
+	public ModelAndView cartgetlist(@RequestParam Map<String, Object> map) {  	
+		ModelAndView mav = new ModelAndView();  
+		List<Map<String, Object>> list = this.userService.cartlist(map);
+	
+		System.out.println(list);
+		
+		mav.addObject("data", list);
+	    
+		
+		return mav;  
+	}  
 	
 	
+	@RequestMapping(value = "user/cartlist")  
+	public ModelAndView cart_list(@RequestParam Map<String, Object> map) {  
+
+	List<Map<String, Object>> list = this.userService.list(map);  
+	
+	String id = map.get("id").toString();
+	
+	ModelAndView mav = new ModelAndView();  
+	mav.addObject("data1", list);  
+	mav.setViewName("/user/cartlist?id="+id);  
+	return mav;  
+	} 
+	
+	@RequestMapping(value = "user/buylist")  
+	public ModelAndView buy_list(@RequestParam Map<String, Object> map) {  
+
+	List<Map<String, Object>> list = this.userService.list(map);  
+	
+	String id = map.get("id").toString();
+	
+	ModelAndView mav = new ModelAndView();  
+	mav.addObject("data1", list);  
+	mav.setViewName("/user/buylist?id="+id);  
+	return mav;  
+	} 
 	
 	
+	@RequestMapping(value="/user/buy", method = RequestMethod.GET)
+	public ModelAndView select_buyinfo(@RequestParam Map<String, Object> map) {  
+
+	List<Map<String, Object>> list2 = this.userService.select_buyinfo(map);  
+
+	List<Map<String, Object>> list = this.userService.list(map);  
+	String id = map.get("id").toString();
+	System.out.println("!!id="+map.get("id"));
 	
+	ModelAndView mav = new ModelAndView();  
+	mav.addObject("data1", list2);  
+	mav.setViewName("/user/buy?id="+id);  
+	return mav; 
+
+	}
 	
 }

@@ -138,10 +138,22 @@
                         <input type="password" id="user_pw" name ="pw" class="textForm">
                     </td>
                 </tr>
+                 <tr>
+                    <th>고객이름</th>
+                    <td>
+                        <input type="text" id="user_name" name ="name" class="textForm">
+                    </td>
+                </tr>
+                  <tr>
+                    <th>주소</th>
+                    <td>
+                        <input type="text" id="user_address" name ="address" class="textForm">
+                    </td>
+                </tr>
                 <tr>
                     <th>전화번호</th>
                     <td>
-                        <input type="hp" id="user_hp" name="adress" class="textForm">
+                        <input type="hp" id="user_hp" name="hp" class="textForm">
                     </td>
                 </tr>
                 <tr>
@@ -153,10 +165,10 @@
                 <tr>
                     <th>성&nbsp&nbsp별</th>
                     <td>
-                        <input type="radio" name="gender" id="male" checked ="checked">
+                        <input type="radio" name="gender" id="male" checked ="checked" value="남">
                         <label for="male">남</label>&nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="gender" id="female">
-                        <label for="female">여</label>
+                        <input type="radio" name="gender" id="female" value="여">
+                        <label for="female" >여</label>
                     </td>
                 </tr>
             </table>

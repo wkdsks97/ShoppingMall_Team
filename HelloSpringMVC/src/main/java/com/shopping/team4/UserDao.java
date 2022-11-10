@@ -1,4 +1,5 @@
 package com.shopping.team4;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -44,7 +45,31 @@ public class UserDao {
 	}
 	 
 	 
+	public List<Map<String, Object>> selectList(Map<String, Object> map) {  
+		return this.sqlSessionTemplate.selectList("user.select_list", map);  
+		}  
+	
+	
+	public List<Map<String, Object>> buy_list(Map<String, Object> map) {  
+		return this.sqlSessionTemplate.selectList("user.buy_list", map);  
+		} 
+	
+	
+	
+	public List<Map<String, Object>> cartList(Map<String, Object> map) {  
+		return this.sqlSessionTemplate.selectList("user.cart_list", map);  
+		}  
+	
+	public List<Map<String, Object>> mycartList(Map<String, Object> map) {  
+		return this.sqlSessionTemplate.selectList("user.mycart_list", map);  
+		} 
+	
+	public List<Map<String, Object>> select_buyinfo(Map<String, Object> map) {  
+		return this.sqlSessionTemplate.selectList("user.select_buyinfo", map);  
+		} 
 	 
-	 
+	 public int addCart(Map<String, Object> map) {
+		  return this.sqlSessionTemplate.insert("user.addCart", map);
+		}
 	 
 }

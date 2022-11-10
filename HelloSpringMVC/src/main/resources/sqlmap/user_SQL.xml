@@ -7,9 +7,9 @@
 		useGeneratedKeys="true" keyProperty="id">  
     <![CDATA[
     insert into customer
-    (id, pw, address,hp,gender,e_mail) 
+    (id, pw,name, address,hp,gender,e_mail) 
     values
-    (#{id}, #{pw}, #{address}, #{hp}, #{gender}, #{e_mail})
+    (#{id}, #{pw}, #{name}, #{address}, #{hp}, #{gender}, #{e_mail})
     ]]>
 	</insert>
 
@@ -27,19 +27,60 @@
 	gender = #{gender}, e_mail = #{e_mail} where id=#{UserId}
 	]]>
 	</update>
-	
-	
-	<select id="login_ok" parameterType="hashMap" resultType="hashMap">
+
+
+
+
+
+	<select id="login_ok" parameterType="hashMap"
+		resultType="hashMap">
 	<![CDATA[
     select pw from customer where id=#{id}
     ]]>
 	</select>
-	
-	<select id="idCheck_test" parameterType="String" resultType="int">
+
+	<select id="idCheck_test" parameterType="String"
+		resultType="int">
 		SELECT COUNT(*) from customer where id =#{id}
 	</select>
 
+	<select id="select_list" parameterType="hashMap"
+		resultType="hashMap">  
+<![CDATA[  
+ select name,address,hp,gender,e_mail from customer 
+]]>
 
 
+	</select>
 
+	<insert id="addCart" parameterType="hashMap"
+		useGeneratedKeys="true" keyProperty="id">  
+    <![CDATA[
+    insert into cart
+    (id, pd_num,orderCount) 
+    values
+    (#{id}, #{pd_num},#{orderCount})
+    ]]>
+	</insert>
+
+	<select id="cart_list" parameterType="hashMap"
+		resultType="hashMap">
+    <![CDATA[
+ select cartId, id, pd_num, orderCount, add_date, pd_des, price from  allpdcart where id= #{id} order by cartId desc
+    ]]>
+	</select>
+
+	<select id="buy_list" parameterType="hashMap"
+		resultType="hashMap">
+    <![CDATA[
+select orderId, id , pd_num, address, orderCount, orderDate , price from buylist order by orderId desc
+    ]]>
+	</select>
+
+	<select id="select_buyinfo" parameterType="hashMap"
+		resultType="hashMap">  
+<![CDATA[  
+select orderId, id , pd_num, address, orderCount, orderDate , price from buylist where id=#{id}
+]]>
+	</select>
 </mapper>

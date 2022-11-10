@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.lecspring.myspring.BookService;
+
 
 
 @Controller
@@ -28,7 +28,7 @@ public class ProductController {
 	public ModelAndView list
 	(@RequestParam Map<String,Object> map,
 	 @RequestParam(value="nowPage",required=false) String nowPage) {
-		double CNT = 8.0; //한 번에 보여지는 페이지 의미(밑에 숫자)
+		double CNT = 8.0; 
 		int LIMITCOUNT = (int)CNT;
 		if(nowPage!=null) {
 			int now = Integer.parseInt(nowPage);
@@ -47,8 +47,8 @@ public class ProductController {
 		int totalCount = 
 				(int)Math.ceil
 				(this.productservice.countPD(map)/CNT);
-				//ceil : 올림
-		mav.addObject("totalCount", totalCount);//맨 끝 페이지 정보
+				
+		mav.addObject("totalCount", totalCount);
 		
 		int nowPos = nowPage==null?1:Integer.parseInt(nowPage);
 		if(nowPos<=0)
@@ -57,7 +57,7 @@ public class ProductController {
 		
 		int endPage = (int)(Math.ceil(nowPos/CNT)*(LIMITCOUNT));
 		int startPage = 0;
-		if(endPage>totalCount) { //끝 부분
+		if(endPage>totalCount) {
 			startPage = endPage-(LIMITCOUNT)+1;
 			endPage=totalCount;
 		} else {
@@ -70,9 +70,6 @@ public class ProductController {
 		mav.addObject("endPage", endPage);
 		
 		
-//		
-//		//검색시 파라메터 더 추가함
-//		//검색 아무 것도 입력 안 하면 원래의 목록보기 처럼 동작
 		if(map.containsKey("keyword"))
 			mav.addObject("keyword", map.get("keyword"));
 		

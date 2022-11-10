@@ -1,5 +1,6 @@
 package com.shopping.team4;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +62,40 @@ public class UserServiceImpl implements UserService {
 	}
 	
 
+	@Override  
+	public List<Map<String, Object>> list(Map<String, Object> map){  
+	return this.userDao.selectList(map);  
+	} 
 	
+	@Override  
+	public List<Map<String, Object>> buy_list(Map<String, Object> map){  
+	return this.userDao.selectList(map);  
+	}  
+	
+	//장바구니
+	@Override
+	public String cart(Map<String, Object> map) {
+		int affectRowCount = this.userDao.addCart(map);
+		if (affectRowCount == 1) {
+			return map.get("id").toString();
+		}
+		return null;
+
+	}
+	@Override  
+	public List<Map<String, Object>> cartlist(Map<String, Object> map){  
+		return this.userDao.cartList(map);  
+	}  
+	
+	@Override  
+	public List<Map<String, Object>> mycartlist(Map<String, Object> map){  
+		return this.userDao.mycartList(map);  
+	} 
+	
+	@Override  
+	public List<Map<String, Object>> select_buyinfo(Map<String, Object> map){  
+		return this.userDao.select_buyinfo(map);  
+	} 
 	
 
 }
